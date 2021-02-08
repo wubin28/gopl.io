@@ -19,6 +19,10 @@ func main() {
 		sep = " "
 	}
 	fmt.Println(s)
+
+	for i := 0; i < len(os.Args); i++ {
+		fmt.Printf("%d:%s\n", i, os.Args[i])
+	}
 }
 
 //!-
