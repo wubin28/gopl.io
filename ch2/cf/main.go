@@ -12,7 +12,7 @@ import (
 	"os"
 	"strconv"
 
-	"gopl.io/ch2/tempconv"
+	"gopl.io/ch2/tempconv" // set "Project GOPATH" to "/home/ben/OOR/katas" in Goland
 )
 
 func main() {
