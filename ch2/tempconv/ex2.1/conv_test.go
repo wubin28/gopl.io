@@ -56,3 +56,26 @@ func TestFToC(t *testing.T) {
 		})
 	}
 }
+
+func TestKToC(t *testing.T) {
+	type args struct {
+		k Kelvin
+	}
+	tests := []struct {
+		name string
+		args args
+		want Celsius
+	}{
+		// TODO: Add test cases.
+		{"Zero Kelvin", args{0}, -273.15},
+		{"Zero Celsius", args{273.15}, 0},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			esp := 0.01 // acceptable floating point error
+			if got := KToC(tt.args.k); math.Abs(float64(got-tt.want)) > esp {
+				t.Errorf("KToC(%v) = %v, want %v", tt.args.k, got, tt.want)
+			}
+		})
+	}
+}
