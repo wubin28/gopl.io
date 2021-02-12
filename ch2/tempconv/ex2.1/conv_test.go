@@ -41,11 +41,17 @@ func TestFToC(t *testing.T) {
 		want Celsius
 	}{
 		// TODO: Add test cases.
+		{"Freezing point of water", args{32}, 0},
+		{"Water boils", args{212}, 100},
+		{"Hot bath", args{104}, 40},
+		{"Very cold day", args{0}, -17.78},
+		{"Extremely cold day", args{-40}, -40},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := FToC(tt.args.f); got != tt.want {
-				t.Errorf("FToC() = %v, want %v", got, tt.want)
+			esp := 0.01 // acceptable floating point error
+			if got := FToC(tt.args.f); math.Abs(float64(got-tt.want)) > esp {
+				t.Errorf("FToC(%v) = %v, want %v", tt.args.f, got, tt.want)
 			}
 		})
 	}
